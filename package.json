@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Tiago Lage",
+  "license": "MIT",
+  "description": "Api de produtos da Bulbe enrgia"
 }
