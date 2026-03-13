@@ -74,8 +74,18 @@ const atualizar = (req, res) => {
 };
 
 // Delete
+//  /api/v1/produtos/:id
 const remover =(req,res) => {
-    // to do Implementar logica de remover
+    const id = Number(req.params.id);
+    const index = produtos.findIndex(p=>p.id ===id);
+
+    if(index===-1){
+        return res.status(404).json({erro:"Produto não encontrado"});
+    }
+
+    produtos.splice(index,1);
+
+    res.status(204).send();
 };
 
 // Module Exports
