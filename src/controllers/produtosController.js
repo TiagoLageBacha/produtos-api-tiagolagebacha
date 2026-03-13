@@ -20,8 +20,31 @@ const buscarPorId = (req, res) => {
 };
 
 // Criar novo produto
+// POST /api/v1/produtos
 const criar =(req, res) => {
-    // to do implementar lógica de criação
+    const{ nome, descricao, preco, categoria, estoque} = req.body;
+
+    if(!nome || !descricao || !preco || !categoria || estoque === undefined){
+        return res.status(400).json({
+            erro: "Todos os campos obrigatórios devem ser preenchidos",
+            campos_esperados: ["nome", "descricao", "preco", "categoria", "estoque"]
+        });
+    }
+
+    const novoProduto ={
+        id: nextId++,
+        nome,
+        descricao,
+        preco,
+        categoria,
+        estoque,
+        ativo: true,
+        criado_em: new Date().toISOString(),
+        atualizado_em: new Date().toISOString()
+    }
+
+    produtos.push(novoProduto);
+    res.status(201).json(novoProduto);
 };
 
 // Atualizar
