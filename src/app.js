@@ -1,4 +1,5 @@
 const express = require('express')
+const produtosRouter = require('./routes/produtos');
 const app = express()
 const port = 3000
 
@@ -12,6 +13,7 @@ app.use((req, res, next) => {
 });
 
 // Registro de Rotas
+app.use('/api/v1/produtos', produtosRouter);
 
 // Middleware de erro global
 app.use((err, req, res, next) => {
