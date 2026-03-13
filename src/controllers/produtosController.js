@@ -1,9 +1,10 @@
 let produtos =[];
 let nextId = 1;
 
-// Listar Produtos
+// GET Listar Produtos
 const listar = (req, res) =>{
     // to do IMPLEMENTAR LÓOGICA DE LISTAGEM
+    res.status(200).json(produtos);
 };
 
 // Buscar por ID
