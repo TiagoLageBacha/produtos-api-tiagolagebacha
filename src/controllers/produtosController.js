@@ -48,8 +48,29 @@ const criar =(req, res) => {
 };
 
 // Atualizar
+// PUT /api/v1/produtos/:id
 const atualizar = (req, res) => {
-    // to do Implementar logica de atualização
+    const id = Number(req.params.id);
+    const{nome, descricao, preco, categoria, estoque, ativo} = req.body;
+
+    const index = produtos.findIndex(p => p.id === id);
+
+    if(index === -1){
+        return res.status(404).json({erro: "Produto não encontrado"});
+    }
+
+    produtos[index]={
+        ...produtos[index],
+        nome,
+        descricao,
+        preco,
+        categoria,
+        estoque,
+        ativo,
+        atualizado_em: new Date().toISOString
+    };
+
+    res.status(200).json(produtos[index]);
 };
 
 // Delete
